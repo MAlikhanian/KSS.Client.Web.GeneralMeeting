@@ -92,13 +92,13 @@ export const MENU_SIDEBAR: MenuConfig = [
           // v2 candidates (Funds Report / License Compliance / Fund Governance /
           // Brokerage Stations / Brokerage Offices / Market-Making Symbols & NAV)
           // are deferred — they ship as separate steps once v1 patterns settle.
-          { title: 'Reports Overview', path: '/members-reports/overview' },
-          { title: 'Brokerages Report', path: '/members-reports/dataentry' },
-          { title: 'Members Directory', path: '/members-reports/member' },
-          { title: 'Brokerage Profile', path: '/members-reports/brokerage-profile' },
-          { title: 'Comparison by Class', path: '/members-reports/by-class' },
-          { title: 'Personnel by Position', path: '/members-reports/by-position' },
-          { title: 'Market-Making Funds', path: '/members-reports/funds' },
+          { title: 'Reports Overview', path: '/members/members-reports/overview' },
+          { title: 'Brokerages Report', path: '/members/members-reports/dataentry' },
+          { title: 'Members Directory', path: '/members/members-reports/member' },
+          { title: 'Brokerage Profile', path: '/members/members-reports/brokerage-profile' },
+          { title: 'Comparison by Class', path: '/members/members-reports/by-class' },
+          { title: 'Personnel by Position', path: '/members/members-reports/by-position' },
+          { title: 'Market-Making Funds', path: '/members/members-reports/funds' },
         ],
       },
       {
@@ -106,57 +106,57 @@ export const MENU_SIDEBAR: MenuConfig = [
         children: [
           {
             title: 'General Information',
-            path: '/brokerages/general-information',
+            path: '/members/brokerages/general-information',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Financial Information',
-            path: '/brokerages/financial-information',
+            path: '/members/brokerages/financial-information',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Members Info',
-            path: '/brokerages/members-info',
+            path: '/members/brokerages/members-info',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Trading Offices',
-            path: '/brokerages/trading-offices',
+            path: '/members/brokerages/trading-offices',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Trading Stations',
-            path: '/brokerages/trading-stations',
+            path: '/members/brokerages/trading-stations',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Company Software',
-            path: '/brokerages/company-software',
+            path: '/members/brokerages/company-software',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Approvals',
-            path: '/brokerages/approvals',
+            path: '/members/brokerages/approvals',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Licenses',
-            path: '/brokerages/licenses',
+            path: '/members/brokerages/licenses',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Legal Cases',
-            path: '/brokerages/legal-cases',
+            path: '/members/brokerages/legal-cases',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Board Committees',
-            path: '/brokerages/board-committees',
+            path: '/members/brokerages/board-committees',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
           {
             title: 'Association Cooperation',
-            path: '/brokerages/association-cooperation',
+            path: '/members/brokerages/association-cooperation',
             permissions: ['Members.Brokerage.Read', 'Members.Brokerage.Modify'],
           },
         ],
@@ -166,37 +166,37 @@ export const MENU_SIDEBAR: MenuConfig = [
         children: [
           {
             title: 'General Information',
-            path: '/investment-funds/general-information',
+            path: '/members/investment-funds/general-information',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Fund Manager',
-            path: '/investment-funds/fund-manager',
+            path: '/members/investment-funds/fund-manager',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Trustee',
-            path: '/investment-funds/trustee',
+            path: '/members/investment-funds/trustee',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Preferred Shareholders',
-            path: '/investment-funds/preferred-shareholders',
+            path: '/members/investment-funds/preferred-shareholders',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Market-Making Symbols',
-            path: '/investment-funds/market-making-symbols',
+            path: '/members/investment-funds/market-making-symbols',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Managers & Staff',
-            path: '/investment-funds/managers-staff',
+            path: '/members/investment-funds/managers-staff',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
           {
             title: 'Trading Stations',
-            path: '/investment-funds/trading-stations',
+            path: '/members/investment-funds/trading-stations',
             permissions: ['Members.InvestmentFunds.Read', 'Members.InvestmentFunds.Modify'],
           },
         ],
