@@ -1,0 +1,95 @@
+npm run build
+npm run start
+
+# ⚠ Live meetings, attendance capture and ballots. Cut over in a window with no
+# scheduled assembly.
+
+# Do NOT use Helper\deployment\build_all.bat — its 19 cd targets point at
+# C:\Source Control\KSS, which does not exist, so every chain dies before
+# docker runs. Build from this directory.
+
+# Step 1: Login to Docker registry
+docker login docker-hosted.sebaoffice.ir
+
+# Step 2: Build the Docker image (pass basePath so assets resolve under /general-meeting)
+docker build --build-arg NEXT_PUBLIC_BASE_PATH=/general-meeting --build-arg NEXT_PUBLIC_APP_NAME=KSS_Client_Web_general_meeting -t docker-hosted.sebaoffice.ir/kss-client-web-general-meeting:latest .
+
+# Alternative: Build and push in one command (if using buildx)
+docker buildx build --push --build-arg NEXT_PUBLIC_BASE_PATH=/general-meeting --build-arg NEXT_PUBLIC_APP_NAME=KSS_Client_Web_general_meeting -t docker-hosted.sebaoffice.ir/kss-client-web-general-meeting:latest .
+
+# NextAuth: this app does not issue sessions, it decrypts the cookie the Shell issued.
+# nextauth-secret must be byte-identical to the Shell's. deployment.yaml omits the key on
+# purpose — absent + non-optional gives CreateContainerConfigError, so the pod refuses to
+# start until step 6 runs. An empty value would instead start the pod and 500 every route
+# while the probes keep reporting Ready.
+#   kubectl patch secret kss-client-web-general-meeting-secrets -n kss-client-web-general-meeting -p "{\"data\":{\"nextauth-secret\":\"$(kubectl get secret kss-client-web-secrets -n kss-client-web -o jsonpath='{.data.nextauth-secret}')\"}}"
+#   kubectl rollout restart deployment/kss-client-web-general-meeting -n kss-client-web-general-meeting
+
+# Step 3: Push the image to registry
+docker push docker-hosted.sebaoffice.ir/kss-client-web-general-meeting:latest
+
+# Step 4: Create secrets (first time only — copy nextauth-secret from the Shell, do not invent one)
+#   kubectl create secret generic kss-client-web-general-meeting-secrets -n kss-client-web-general-meeting \
+#     --from-literal=nextauth-secret="$(kubectl get secret kss-client-web-secrets -n kss-client-web -o jsonpath='{.data.nextauth-secret}' | base64 -d)" \
+#     --from-literal=storage-endpoint='' --from-literal=storage-region='' \
+#     --from-literal=storage-bucket='' --from-literal=storage-access-key-id='' \
+#     --from-literal=storage-secret-access-key='' --from-literal=storage-cdn-url='' \
+#     --dry-run=client -o yaml | kubectl apply -f -
+
+# Step 5: Apply manifests (Namespace + Deployment + Service + ConfigMap + Secret + PDB + NetworkPolicy)
+# EXPECTED: pods will NOT start yet — nextauth-secret is deliberately absent until step 6.
+kubectl apply -f deployment.yaml
+
+# Step 6: NEXTAUTH_SECRET — copy it across, do not read it, retype it or generate one
+kubectl patch secret kss-client-web-general-meeting-secrets -n kss-client-web-general-meeting -p "{\"data\":{\"nextauth-secret\":\"$(kubectl get secret kss-client-web-secrets -n kss-client-web -o jsonpath='{.data.nextauth-secret}')\"}}"
+# Verify the two print IDENTICAL strings:
+#   kubectl get secret kss-client-web-secrets     -n kss-client-web     -o jsonpath='{.data.nextauth-secret}'
+#   kubectl get secret kss-client-web-general-meeting-secrets -n kss-client-web-general-meeting -o jsonpath='{.data.nextauth-secret}'
+
+# Step 7: Restart deployment so pods pick up ConfigMap/Secret changes
+kubectl rollout restart deployment/kss-client-web-general-meeting -n kss-client-web-general-meeting
+kubectl rollout status deployment/kss-client-web-general-meeting -n kss-client-web-general-meeting
+
+# Step 8: Point the Shell at this zone (nothing reaches these pods without it)
+# ⚠ The Shell NO LONGER has its own /general-meeting copy — deleted 2026-08-27. So unlike mpf there is
+# no fallback: without this entry /general-meeting/* is 404, and if the zone dies it is 500, never the
+# old page. Rollback means restoring the Shell's copy from source, not removing a key.
+#   ZONES={"general-meeting":"http://kss-client-web-general-meeting-service.kss-client-web-general-meeting.svc.cluster.local"}
+#   kubectl rollout restart deployment/kss-client-web -n kss-client-web
+
+# Step 9: Verify the zone hop (only /general-meeting/api/health can prove it — the Shell has no such route)
+#   200 = the Shell is proxying here.  404 = ZONES is not in effect.
+curl -s -o /dev/null -w "%{http_code}\n" https://erp.seba.ir/general-meeting/api/health
+
+# Create docker-registry secret (first time only)
+# Secrets are namespace-scoped — the one in kss-client-web does NOT carry over.
+kubectl create secret docker-registry docker-secret \
+  --docker-server=docker-hosted.sebaoffice.ir \
+  --docker-username=YOUR_USERNAME \
+  --docker-password=YOUR_PASSWORD \
+  --namespace kss-client-web-general-meeting
+
+# Useful diagnostic commands
+kubectl get pods          -n kss-client-web-general-meeting
+kubectl get secrets       -n kss-client-web-general-meeting
+kubectl get configmaps    -n kss-client-web-general-meeting
+kubectl get svc           -n kss-client-web-general-meeting
+kubectl get networkpolicy -n kss-client-web-general-meeting
+kubectl get pdb           -n kss-client-web-general-meeting
+
+# This zone has no public entrypoint, so there is nothing here to check for
+# ingress, certificate, pvc or hpa — those do not exist in this namespace by
+# design, not by omission.
+
+# Check pod logs
+kubectl logs -n kss-client-web-general-meeting -l app=kss-client-web-general-meeting --tail=50
+
+# Check pod env vars (confirm NEXTAUTH_SECRET is populated and basePath is /general-meeting)
+kubectl exec -it $(kubectl get pods -n kss-client-web-general-meeting -l app=kss-client-web-general-meeting -o jsonpath='{.items[0].metadata.name}') -n kss-client-web-general-meeting -- env | sort
+
+# Reach the zone from inside the cluster, bypassing the Shell
+kubectl run -n kss-client-web-general-meeting tmp-curl --rm -it --image=curlimages/curl --restart=Never -- curl -s -o /dev/null -w "%{http_code}\n" http://kss-client-web-general-meeting-service.kss-client-web-general-meeting.svc.cluster.local/general-meeting/api/health
+
+# Delete resources if needed
+kubectl delete networkpolicy kss-client-web-general-meeting-network-policy -n kss-client-web-general-meeting
+kubectl delete secrets docker-secret -n kss-client-web-general-meeting

@@ -1,0 +1,328 @@
+# =============================================================================
+#  KSS Client Web — general-meeting domain app (multi-zone)
+# =============================================================================
+#  Modelled on Mpf/deployment/deployment.yaml, which is itself modelled on the
+#  Shell's. Differences from the Shell, each deliberate:
+#
+#   1. NO INGRESS. This zone has no public entrypoint. The Shell is the only
+#      thing the internet talks to; it rewrites /general-meeting/* here over cluster DNS.
+#      Giving the zone its own Ingress would expose it directly — and this app
+#      has no middleware.ts, so an unauthenticated visitor would get a
+#      rendering page instead of a redirect to sign-in.
+#
+#   2. PROBES HIT /general-meeting/api/health — a route this app owns, with no database and
+#      no session. NOT the Shell's /api/health, which queries Prisma: a probe
+#      that touches a backend restarts the pod when the BACKEND is down.
+#
+#   3. Smaller footprint. One domain, no uploads, no autoscaler.
+#
+#  ---------------------------------------------------------------------------
+#  ⚠ This app calls KSS.Service.SEBA_ERP_Members. Real data, live meetings and ballots.
+#
+#  ---------------------------------------------------------------------------
+#  THREE THINGS ARE NOT IN THIS FILE, in order of how quietly each one fails:
+#
+#   A. docker-secret, in THIS namespace       (command file, step 5)
+#      Secrets are namespace-scoped; the one in kss-client-web does not carry
+#      over. Pods sit in ImagePullBackOff — loud, and describe names the cause.
+#
+#   B. nextauth-secret, copied from the Shell (command file, step 6)
+#      Deliberately absent from the Secret below. Pod refuses to start with
+#      CreateContainerConfigError until it exists — loud by design.
+#
+#   C. ZONES, on the SHELL                    (command file, step 8)
+#      ZONES={"general-meeting":"http://kss-client-web-general-meeting-service.kss-client-web-general-meeting.svc.cluster.local"}
+#      The silent one. Unset, these pods run, pass every probe, report Ready and
+#      take zero traffic, with nothing anywhere reporting a problem.
+#
+#      ⚠ AND THE SHELL NO LONGER HAS ITS OWN /general-meeting COPY — it was deleted
+#      2026-08-27. So unlike Mpf, there is no fallback: if this zone is down or
+#      absent from ZONES, /general-meeting/* is 404 or 500, never the old page.
+# =============================================================================
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kss-client-web-general-meeting
+  labels:
+    name: kss-client-web-general-meeting
+    app: kss-client-web-general-meeting
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kss-client-web-general-meeting
+  namespace: kss-client-web-general-meeting
+  labels:
+    app: kss-client-web-general-meeting
+    version: v1.0.0
+  annotations:
+    keel.sh/policy: force
+    keel.sh/match-tag: "true"
+    keel.sh/trigger: poll
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: kss-client-web-general-meeting
+  template:
+    metadata:
+      labels:
+        app: kss-client-web-general-meeting
+        version: v1.0.0
+    spec:
+      imagePullSecrets:
+      - name: docker-secret
+      containers:
+      - name: kss-client-web-general-meeting
+        image: docker-hosted.sebaoffice.ir/kss-client-web-general-meeting:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
+        - name: HOSTNAME
+          value: "0.0.0.0"
+        - name: TZ
+          value: "UTC"
+
+        # The NextAuth session cookie carries every permission claim (~25 KB
+        # JWE-encoded) and overflows Node's default 16 KB header buffer. This
+        # zone receives that same cookie, so it needs the same allowance or the
+        # request arrives as HTTP 431 / 502.
+        - name: NODE_OPTIONS
+          value: "--max-http-header-size=131072"
+
+        # ── Auth ────────────────────────────────────────────────────────────
+        # ⚠ NEXTAUTH_SECRET MUST BE BYTE-IDENTICAL TO THE SHELL'S.
+        # This app does not issue sessions — it decrypts the cookie the Shell
+        # issued. A different value is not weaker auth, it is broken auth.
+        #
+        # The key is deliberately ABSENT from the Secret below and this
+        # reference is deliberately NOT `optional`. Together that gives
+        # CreateContainerConfigError — the pod refuses to start.
+        #
+        #   An EMPTY value would be worse: valid base64, so the key exists, the
+        #   pod STARTS, and next-auth reads "" (it uses ??, so "" is not
+        #   defaulted). assert.js returns MissingSecret in production,
+        #   getServerSession throws on the non-200, and every BFF route 500s —
+        #   while the probes below need no session, so the pod reports Ready
+        #   throughout. A healthy-looking deployment where every call fails.
+        #
+        # A checked-in key would also be re-blanked by every `kubectl apply`.
+        - name: NEXTAUTH_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: kss-client-web-general-meeting-secrets
+              key: nextauth-secret
+
+        # The public origin. Cookies are scoped by host and path, never by port
+        # or by which pod answered — so this stays the Shell's URL.
+        - name: NEXTAUTH_URL
+          value: "https://erp.seba.ir"
+
+        # Used by next.config.mjs to proxy /api/auth/* back to the Shell. That
+        # rewrite is DEV-ONLY (returns [] when NODE_ENV !== development), so in
+        # cluster this is inert — set for parity and for local `docker run`.
+        - name: SHELL_URL
+          value: "https://erp.seba.ir"
+
+        # ── Application ─────────────────────────────────────────────────────
+        # NEXT_PUBLIC_BASE_PATH is inlined at BUILD time by the Dockerfile ARG,
+        # not read here. Set at runtime too so a mismatch shows in
+        # `kubectl describe` rather than only as broken asset URLs.
+        - name: NEXT_PUBLIC_BASE_PATH
+          value: "/general-meeting"
+        - name: NEXT_PUBLIC_APP_NAME
+          value: "KSS_Client_Web_general_meeting"
+
+        # ── Backend services ────────────────────────────────────────────────
+        # Backend services this app calls. Values mirror the Shell's own ConfigMap
+        # so the two cannot drift.
+        - name: AUTH_API_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kss-client-web-general-meeting-config
+              key: auth-api-base-url
+        - name: ERP_MEMBERS_API_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kss-client-web-general-meeting-config
+              key: erp-members-api-base-url
+        - name: PERSON_API_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kss-client-web-general-meeting-config
+              key: person-api-base-url
+
+        # ── Object storage ──────────────────────────────────────────────────
+        # Referenced by shared lib code copied in from _Kit. Marked optional so
+        # an absent secret does not block startup — this app has no upload path.
+        - name: STORAGE_ENDPOINT
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-endpoint, optional: true }
+        - name: STORAGE_REGION
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-region, optional: true }
+        - name: STORAGE_BUCKET
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-bucket, optional: true }
+        - name: STORAGE_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-access-key-id, optional: true }
+        - name: STORAGE_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-secret-access-key, optional: true }
+        - name: STORAGE_CDN_URL
+          valueFrom:
+            secretKeyRef: { name: kss-client-web-general-meeting-secrets, key: storage-cdn-url, optional: true }
+
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
+        # ── Probes ──────────────────────────────────────────────────────────
+        # /general-meeting/api/health — owned by this app, no database, no session. See the
+        # route's own comment for why it has no dependencies.
+        #
+        # timeoutSeconds is explicit on all three: the default is 1s, and a cold
+        # Next.js start answering in 1.2s would fail the probe most likely to be
+        # slow. (initialDelaySeconds on liveness/readiness is inert while a
+        # startupProbe exists; the kubelet runs neither until it passes.)
+        livenessProbe:
+          httpGet: { path: /general-meeting/api/health, port: 3000, scheme: HTTP }
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+        readinessProbe:
+          httpGet: { path: /general-meeting/api/health, port: 3000, scheme: HTTP }
+          periodSeconds: 15
+          timeoutSeconds: 5
+          failureThreshold: 3
+        startupProbe:
+          httpGet: { path: /general-meeting/api/health, port: 3000, scheme: HTTP }
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 24
+
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 1001
+          runAsGroup: 1001
+          readOnlyRootFilesystem: false
+          capabilities:
+            drop: [ALL]
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kss-client-web-general-meeting-service
+  namespace: kss-client-web-general-meeting
+  labels:
+    app: kss-client-web-general-meeting
+spec:
+  selector:
+    app: kss-client-web-general-meeting
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+    protocol: TCP
+  type: ClusterIP
+  sessionAffinity: None
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kss-client-web-general-meeting-config
+  namespace: kss-client-web-general-meeting
+data:
+  auth-api-base-url: "https://auth.api.sebaoffice.ir"
+  erp-members-api-base-url: "https://seba.erp.members.api.sebaoffice.ir"
+  person-api-base-url: "https://person.api.sebaoffice.ir"
+---
+# ⚠ `nextauth-secret` IS NOT IN THIS FILE, AND MUST NOT BE ADDED TO IT.
+#   1. An empty value would let the pod START and then 500 every route while
+#      probes keep reporting Ready. Absent + non-optional gives
+#      CreateContainerConfigError instead — the pod never starts.
+#   2. `kubectl apply -f` would re-blank a hand-patched value on every apply.
+# Create it out-of-band — docker-k8s-command.txt step 6 copies it from the
+# Shell's secret, which is the only correct source.
+#
+# The storage keys ARE checked in empty because their references are
+# `optional: true` — absent or empty, the pod starts either way.
+#
+# To set a single value:
+#   kubectl patch secret kss-client-web-general-meeting-secrets -n kss-client-web-general-meeting \
+#     -p "{\"data\":{\"KEY\":\"$(echo -n 'VALUE' | base64 -w0)\"}}"
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kss-client-web-general-meeting-secrets
+  namespace: kss-client-web-general-meeting
+type: Opaque
+data:
+  storage-endpoint: ""
+  storage-region: ""
+  storage-bucket: ""
+  storage-access-key-id: ""
+  storage-secret-access-key: ""
+  storage-cdn-url: ""
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: kss-client-web-general-meeting-pdb
+  namespace: kss-client-web-general-meeting
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: kss-client-web-general-meeting
+---
+# Only the Shell may reach this zone. There is no Ingress, so this is belt and
+# braces — but it makes "no public entrypoint" a property of the cluster rather
+# than of a file nobody re-reads.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kss-client-web-general-meeting-network-policy
+  namespace: kss-client-web-general-meeting
+spec:
+  podSelector:
+    matchLabels:
+      app: kss-client-web-general-meeting
+  policyTypes: [Ingress, Egress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: kss-client-web
+    ports:
+    - protocol: TCP
+      port: 3000
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    ports:
+    - { protocol: TCP, port: 80 }
+    - { protocol: TCP, port: 443 }
+    - { protocol: TCP, port: 8000 }

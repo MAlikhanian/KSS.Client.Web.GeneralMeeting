@@ -1,0 +1,92 @@
+{
+  "dashboard": {
+    "title": "داشبورد",
+    "description": "مرکز اصلی برای شخصی‌سازی",
+    "datePicker": {
+      "pickDateRange": "انتخاب بازه تاریخ",
+      "apply": "اعمال",
+      "reset": "بازنشانی"
+    },
+    "entityCounts": {
+      "companies": "شرکت‌ها",
+      "persons": "اشخاص",
+      "brokerages": "کارگزاری‌ها",
+      "funds": "صندوق‌ها"
+    },
+    "highlights": {
+      "title": "نکات برجسته",
+      "totalLabel": "مجموع شرکت‌ها",
+      "allCompanies": "همه شرکت‌ها",
+      "withAccess": "با کاربر فعال (دسترسی)",
+      "withCreatedPersons": "با کاربر فعال و افراد ثبت‌شده",
+      "withoutAccess": "بدون دسترسی",
+      "legendWithCreated": "با کاربر فعال و افراد ثبت‌شده",
+      "legendWithAccessOnly": "با کاربر فعال بدون افراد",
+      "legendWithoutAccess": "بدون دسترسی"
+    },
+    "entryCallout": {
+      "tedpixSubtitle": "شاخص کل بورس تهران",
+      "marketOpen": "بازار باز",
+      "marketClosed": "بازار بسته",
+      "lastUpdate": "آخرین به‌روزرسانی",
+      "viewOnTsetmc": "مشاهده در tsetmc.com",
+      "loading": "در حال دریافت..."
+    },
+    "earningsChart": {
+      "title": "روند ۱۲ ماهه شاخص کل بورس",
+      "earnings": "شاخص پایان ماه",
+      "monthClose": "شاخص پایان ماه",
+      "month1": "فروردین",
+      "month2": "اردیبهشت",
+      "month3": "خرداد",
+      "month4": "تیر",
+      "month5": "مرداد",
+      "month6": "شهریور",
+      "month7": "مهر",
+      "month8": "آبان",
+      "month9": "آذر",
+      "month10": "دی",
+      "month11": "بهمن",
+      "month12": "اسفند"
+    },
+    "marketTable": {
+      "title": "بازار سرمایه و ارز",
+      "asset": "نام",
+      "lastPrice": "آخرین مقدار",
+      "change": "تغییرات",
+      "lastUpdate": "تاریخ",
+      "noData": "داده‌ای یافت نشد",
+      "loading": "در حال دریافت..."
+    },
+    "supportMembers": {
+      "title": "اعضای پشتیبانی",
+      "loading": "در حال دریافت...",
+      "noData": "موردی یافت نشد",
+      "colName": "نام",
+      "colPosition": "سمت",
+      "colExt": "داخلی",
+      "titles": {
+        "manager": "مدیر",
+        "seniorExpert": "کارشناس مسئول",
+        "expert": "کارشناس",
+        "supportExpert": "کارشناس پشتیبانی",
+        "staff": "کارمند"
+      },
+      "departments": {
+        "data": "تحلیل داده و توسعه نرم‌افزار",
+        "members": "امور اعضا",
+        "it": "فناوری اطلاعات"
+      }
+    },
+    "teams": {
+      "title": "تیم‌ها",
+      "teamMembers": "اعضای تیم",
+      "viewAll": "مشاهده همه",
+      "team": "تیم",
+      "rating": "امتیاز",
+      "lastModified": "آخرین تغییر",
+      "members": "اعضا",
+      "searchTeams": "جستجوی تیم‌ها..."
+    }
+  }
+}
