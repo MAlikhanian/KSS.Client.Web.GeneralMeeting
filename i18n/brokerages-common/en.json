@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "brokerageSelection": "Brokerage Selection"
+  },
+  "fields": {
+    "selectedBrokerage": "Select Brokerage"
+  },
+  "placeholders": {
+    "selectedBrokerage": "Choose a brokerage to submit information for"
+  },
+  "search": {
+    "placeholder": "Search brokerages...",
+    "noResults": "No brokerages found."
+  },
+  "selectBrokerage": {
+    "title": "Select Brokerage",
+    "description": "To edit information, select a brokerage from the list.",
+    "placeholder": "Select brokerage to edit...",
+    "label": "Brokerage",
+    "newBrokerage": "Register New Brokerage",
+    "editMode": "Edit Mode:"
+  }
+}

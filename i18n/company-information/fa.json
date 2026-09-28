@@ -1,0 +1,241 @@
+{
+  "readOnly": {
+    "companyInfoTitle": "اطلاعات شرکت",
+    "notice": {
+      "title": "اطلاعات شرکت در این صفحه فقط‌خواندنی است",
+      "description": "برای ویرایش اطلاعات شرکت (نام، ثبت، تماس‌ها و آدرس‌ها) به ",
+      "link": "بخش شرکت ← ویرایش شرکت",
+      "suffix": " مراجعه کنید."
+    }
+  },
+  "toolbar": {
+    "title": "اطلاعات شرکت",
+    "description": "مدیریت اطلاعات عمومی شرکت",
+    "createTitle": "ایجاد شرکت",
+    "createDescription": "ثبت شرکت جدید",
+    "viewTitle": "مشاهده شرکت",
+    "viewDescription": "مشاهده اطلاعات شرکت",
+    "saveDraft": "ذخیره پیش‌نویس",
+    "submit": "ارسال"
+  },
+  "informationViewOnlyBanner": "شما فقط دسترسی مشاهده دارید",
+  "form.messages.created": "ثبت با موفقیت انجام شد",
+  "form.messages.updated": "ویرایش با موفقیت انجام شد",
+  "form.messages.deleted": "حذف با موفقیت انجام شد",
+  "form.messages.autoSubmitInfo": "همه عملیات به طور خودکار ثبت می‌شوند، به جز {{section}}",
+  "fields": {
+    "selectedCompany": "انتخاب شرکت"
+  },
+  "placeholders": {
+    "selectedCompany": "شرکت مورد نظر را برای ارسال اطلاعات انتخاب کنید"
+  },
+  "search": {
+    "placeholder": "جستجوی شرکت‌ها...",
+    "noResults": "هیچ شرکتی یافت نشد."
+  },
+  "selectCompany": {
+    "title": "انتخاب شرکت",
+    "description": "برای ویرایش اطلاعات، یک شرکت را از لیست انتخاب کنید.",
+    "placeholder": "انتخاب شرکت برای ویرایش...",
+    "label": "شرکت",
+    "newCompany": "ثبت شرکت جدید",
+    "editMode": "حالت ویرایش:"
+  },
+  "common": {
+    "add": "افزودن",
+    "cancel": "لغو",
+    "save": "ذخیره",
+    "person": "شخص",
+    "company": "شرکت",
+    "current": "جاری",
+    "toggleHistory": "نمایش تاریخچه"
+  },
+  "stakeholderTypes": {
+    "parent": "شرکت مادر",
+    "subsidiary": "شرکت فرعی",
+    "investor": "سرمایه‌گذار",
+    "partner": "شریک",
+    "shareholder": "سهامدار",
+    "franchisor": "فرانچایزر",
+    "franchisee": "فرانچایزی",
+    "other": "سایر"
+  },
+  "form": {
+    "title": "اطلاعات عمومی",
+    "addStakeholder": "افزودن ذی‌نفع",
+    "editStakeholder": "ویرایش ذی‌نفع",
+    "messages": {
+      "companyCreated": "شرکت با موفقیت ثبت شد",
+      "companyUpdated": "شرکت با موفقیت ویرایش شد",
+      "createInfo": "پس از ثبت شرکت، برای تکمیل سایر اطلاعات (تماس‌ها، ذی‌نفعان و غیره) به صفحه ویرایش هدایت می‌شوید."
+    },
+    "validation": {
+      "invalidPhone": "شماره تلفن باید در قالب E.164 باشد: علامت + و ۷ تا ۱۵ رقم (مثال: ‎+982112345678‎)"
+    },
+    "addNameHistory": "افزودن تغییر نام جدید",
+    "editNameHistory": "ویرایش تغییر نام",
+    "addTranslation": "افزودن ترجمه",
+    "editTranslation": "ویرایش ترجمه",
+    "addEmail": "افزودن ایمیل",
+    "editEmail": "ویرایش ایمیل",
+    "addPhone": "افزودن تلفن",
+    "editPhone": "ویرایش تلفن",
+    "addAddress": "افزودن آدرس",
+    "editAddress": "ویرایش آدرس",
+    "addWebsite": "افزودن وب‌سایت",
+    "editWebsite": "ویرایش وب‌سایت",
+    "sections": {
+      "companyInfo": "اطلاعات شرکت",
+      "basicInfo": "اطلاعات پایه",
+      "nameHistory": "تاریخچه نام",
+      "registrationInfo": "اطلاعات ثبت",
+      "legalInfo": "اطلاعات حقوقی",
+      "registrationLegal": "اطلاعات ثبتی و حقوقی",
+      "contactInfo": "اطلاعات تماس",
+      "addressInfo": "اطلاعات آدرس",
+      "stakeholders": "ذی‌نفعان",
+      "stakeholderHistory": "تاریخچه ذی‌نفع",
+      "operations": "عملیات"
+    },
+    "fields": {
+      "companyPersianName": "نام شرکت (فارسی)",
+      "companyLatinName": "نام شرکت (لاتین)",
+      "formerNames": "نام‌های قبلی",
+      "registrationDate": "تاریخ ثبت",
+      "registrationNumber": "شماره ثبت",
+      "registrationPlace": "محل ثبت",
+      "seoRegistrationDate": "تاریخ ثبت در سازمان",
+      "seoRegistrationNumber": "شماره ثبت در سازمان",
+      "employeeCount": "تعداد کارکنان",
+      "nationalId": "شناسه ملی",
+      "economicCode": "کد اقتصادی",
+      "phoneNumber": "شماره تلفن",
+      "faxNumber": "شماره فکس",
+      "headOfficeAddress": "آدرس دفتر مرکزی",
+      "postalCode": "کد پستی",
+      "poBox": "صندوق پستی",
+      "website": "وب‌سایت",
+      "email": "ایمیل",
+      "registrationCountry": "کشور ثبت",
+      "registrationRegion": "استان ثبت",
+      "registrationCity": "شهر ثبت",
+      "stakeholderType": "نوع ذی‌نفع",
+      "relatedParty": "طرف مرتبط",
+      "relatedPartyType": "نوع طرف مرتبط",
+      "ownershipPercentage": "درصد مالکیت",
+      "shareCount": "تعداد سهام",
+      "effectiveDate": "تاریخ اعمال",
+      "endDate": "تاریخ پایان",
+      "boardRepresentative": "نماینده هیئت مدیره",
+      "names": "نام‌ها",
+      "companyName": "نام شرکت",
+      "startDate": "تاریخ شروع",
+      "status": "وضعیت",
+      "description": "توضیحات",
+      "current": "جاری",
+      "translations": "ترجمه‌ها",
+      "firstTranslation": "نام شرکت (اولین ترجمه)",
+      "language": "زبان",
+      "country": "کشور",
+      "province": "استان",
+      "city": "شهر",
+      "street1": "آدرس (خیابان ۱)",
+      "street2": "آدرس (خیابان ۲)",
+      "locationColumn": "کشور / استان / شهر"
+    },
+    "placeholders": {
+      "companyPersianName": "نام شرکت را به فارسی وارد کنید",
+      "companyLatinName": "نام شرکت را به لاتین وارد کنید",
+      "formerNames": "نام‌های قبلی شرکت را وارد کنید (هر نام در یک خط)",
+      "registrationNumber": "شماره ثبت را وارد کنید",
+      "registrationPlace": "محل ثبت را وارد کنید",
+      "seoRegistrationNumber": "شماره ثبت در سازمان را وارد کنید",
+      "employeeCount": "تعداد کارکنان را وارد کنید",
+      "nationalId": "شناسه ملی را وارد کنید",
+      "economicCode": "کد اقتصادی را وارد کنید",
+      "phoneNumber": "شماره تلفن را وارد کنید",
+      "faxNumber": "شماره فکس را وارد کنید",
+      "headOfficeAddress": "آدرس دفتر مرکزی را وارد کنید",
+      "postalCode": "کد پستی را وارد کنید",
+      "poBox": "شماره صندوق پستی را وارد کنید",
+      "website": "آدرس وب‌سایت را وارد کنید",
+      "email": "آدرس ایمیل را وارد کنید",
+      "registrationCountry": "کشور ثبت را انتخاب کنید",
+      "registrationRegion": "استان ثبت را انتخاب کنید",
+      "registrationCity": "شهر ثبت را انتخاب کنید",
+      "registrationDate": "تاریخ ثبت را انتخاب کنید",
+      "effectiveDate": "تاریخ اعمال را انتخاب کنید",
+      "noStakeholders": "هیچ ذی‌نفعی ثبت نشده است",
+      "unknownPerson": "شخص ناشناخته",
+      "unknownCompany": "شرکت ناشناخته",
+      "noNameHistory": "هیچ نامی ثبت نشده است",
+      "startDate": "تاریخ شروع",
+      "endDate": "خالی = نام جاری",
+      "nameChangeDescription": "دلیل تغییر نام...",
+      "companyNameIn": "نام شرکت به",
+      "noTranslations": "هیچ ترجمه‌ای ثبت نشده است",
+      "noEmails": "هیچ ایمیلی ثبت نشده است",
+      "noPhones": "هیچ تلفنی ثبت نشده است",
+      "noAddresses": "هیچ آدرسی ثبت نشده است",
+      "noWebsites": "وب‌سایتی ثبت نشده است",
+      "websiteExample": "https://www.company.com",
+      "selectCountry": "انتخاب کشور",
+      "selectProvince": "انتخاب استان",
+      "selectCity": "انتخاب شهر",
+      "street1": "خیابان اصلی",
+      "street2": "پلاک، طبقه، واحد",
+      "postalCodeLength": "کد پستی باید {{count}} کاراکتر باشد",
+      "emailExample": "example@company.com",
+      "phoneExample": "+982112345678"
+    },
+    "actions": {
+      "cancel": "لغو",
+      "save": "ذخیره",
+      "create": "ایجاد شرکت",
+      "update": "به‌روزرسانی شرکت",
+      "processing": "در حال پردازش..."
+    }
+  },
+  "labels": {
+    "address": {
+      "headOffice": "دفتر مرکزی",
+      "branch": "شعبه",
+      "warehouse": "انبار",
+      "factory": "کارخانه",
+      "other": "سایر"
+    },
+    "email": {
+      "main": "اصلی",
+      "work": "کاری",
+      "personal": "شخصی",
+      "support": "پشتیبانی",
+      "other": "سایر"
+    },
+    "phone": {
+      "landline": "تلفن ثابت",
+      "mobile": "موبایل",
+      "fax": "فکس",
+      "emergency": "اضطراری",
+      "other": "سایر"
+    },
+    "website": {
+      "main": "اصلی",
+      "support": "پشتیبانی",
+      "shop": "فروشگاه",
+      "careers": "استخدام",
+      "other": "سایر"
+    }
+  },
+  "sidebar": {
+    "title": "نمای کلی پروفایل",
+    "completionRate": "نرخ تکمیل",
+    "completionRateValue": "۰٪ تکمیل شده",
+    "verifiedInfo": "اطلاعات تأیید شده",
+    "verifiedInfoValue": "۰ فیلد تأیید شده",
+    "lastUpdated": "آخرین به‌روزرسانی",
+    "lastUpdatedValue": "۲ ساعت پیش",
+    "progress": "پیشرفت این هفته",
+    "progressValue": "+۰٪ این هفته",
+    "companyProfile": "پروفایل شرکت"
+  }
+}

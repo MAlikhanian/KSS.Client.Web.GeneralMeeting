@@ -1,0 +1,16 @@
+{
+  "sectionTitle": "Name, Family Name & Father Name",
+  "addDialog": "Add Language",
+  "editDialog": "Edit Name",
+  "language": "Language",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "fatherName": "Father Name",
+  "nameIn": "First name in",
+  "lastNameIn": "Last name in",
+  "fatherNameIn": "Father name in",
+  "noItems": "No names registered. Add at least one language.",
+  "added": "Name added",
+  "updated": "Name updated",
+  "deleted": "Name deleted"
+}

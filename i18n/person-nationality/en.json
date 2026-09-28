@@ -1,0 +1,12 @@
+{
+  "sectionTitle": "Nationalities",
+  "addDialog": "Add Nationality",
+  "editDialog": "Edit Nationality",
+  "country": "Nationality Country",
+  "noItems": "No nationalities registered",
+  "added": "Nationality added",
+  "updated": "Nationality updated",
+  "deleted": "Nationality deleted",
+  "deleteFailed": "Failed to delete nationality",
+  "duplicate": "This nationality already exists"
+}

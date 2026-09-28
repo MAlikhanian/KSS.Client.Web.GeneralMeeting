@@ -1,0 +1,18 @@
+{
+  "sectionTitle": "Status",
+  "addDialog": "Add Active Period",
+  "setEndDate": "Set End Date",
+  "noItems": "No active periods registered",
+  "selectDate": "Select Date",
+  "startDateRequired": "Start date is required",
+  "endDateRequired": "End date is required",
+  "endDateAfterStart": "End date must be after start date",
+  "closeCurrentFirst": "Set end date for current period first",
+  "startAfterPrevEnd": "Start date must be after previous period end date",
+  "endDateOptional": "Leave empty if period is current",
+  "canOnlyDeleteLast": "Only the last record can be deleted",
+  "added": "Active period added",
+  "updated": "Status updated",
+  "deleted": "Period deleted",
+  "deleteFailed": "Failed to delete status"
+}

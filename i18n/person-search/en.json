@@ -1,0 +1,10 @@
+{
+  "title": "Select Person",
+  "description": "Select a person to edit, or register a new person.",
+  "label": "Person",
+  "placeholder": "Name, family name or national code...",
+  "searchPlaceholder": "Search...",
+  "minChars": "Type at least 3 characters to search",
+  "resultsCount": "{{n}} persons",
+  "noResults": "No results found"
+}

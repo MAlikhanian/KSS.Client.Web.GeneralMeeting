@@ -1,0 +1,22 @@
+{
+  "emailsTitle": "Emails",
+  "phonesTitle": "Phone Numbers",
+  "addEmail": "Add Email",
+  "editEmail": "Edit Email",
+  "addPhone": "Add Phone Number",
+  "editPhone": "Edit Phone Number",
+  "emailAddress": "Email Address",
+  "phoneNumber": "Phone Number",
+  "noEmails": "No emails registered",
+  "noPhones": "No phone numbers registered",
+  "emailRequired": "Email is required",
+  "phoneRequired": "Phone number is required",
+  "emailAdded": "Email added",
+  "emailUpdated": "Email updated",
+  "emailDeleted": "Email deleted",
+  "emailDeleteFailed": "Failed to delete email",
+  "phoneAdded": "Phone added",
+  "phoneUpdated": "Phone updated",
+  "phoneDeleted": "Phone deleted",
+  "phoneDeleteFailed": "Failed to delete phone"
+}

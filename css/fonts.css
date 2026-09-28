@@ -1,0 +1,133 @@
+/* NOTE: paths carry the basePath. CSS cannot read NEXT_PUBLIC_BASE_PATH,
+   and public/ assets are served under the app's basePath, so /fonts/x
+   would 404. Rendered from fonts.css.tmpl by _Kit\sync-kit.ps1. */
+/* Vazirmatn Font Family - Local Files */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/general-meeting/fonts/vazirmatn/Vazirmatn-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font Family Variables */
+:root {
+  --font-vazirmatn: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+  --font-vazirmatn-fallback: 'Vazirmatn', 'Vazir', 'IRANSans', 'Tahoma', 'Arial', sans-serif;
+}
+
+/* Utility Classes */
+.font-vazirmatn { 
+  font-family: var(--font-vazirmatn); 
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  font-family: var(--font-vazirmatn);
+}
+
+/* Language-specific font assignments */
+[lang="fa"] { 
+  font-family: var(--font-vazirmatn); 
+}
+
+/* Ensure Vazirmatn is applied to all form elements */
+.font-vazirmatn input,
+.font-vazirmatn textarea,
+.font-vazirmatn select,
+.font-vazirmatn button,
+.font-vazirmatn label,
+.font-vazirmatn p,
+.font-vazirmatn span,
+.font-vazirmatn div,
+.font-vazirmatn h1,
+.font-vazirmatn h2,
+.font-vazirmatn h3,
+.font-vazirmatn h4,
+.font-vazirmatn h5,
+.font-vazirmatn h6 {
+  font-family: var(--font-vazirmatn);
+}
+
+/* Ensure form components inherit Vazirmatn font */
+.font-vazirmatn [data-slot="form-label"],
+.font-vazirmatn [data-slot="form-message"],
+.font-vazirmatn [data-slot="form-description"] {
+  font-family: var(--font-vazirmatn);
+}
+
+/* RTL support for Vazirmatn font */
+[dir="rtl"] .font-vazirmatn {
+  font-family: var(--font-vazirmatn);
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Ensure Vazirmatn works well with different languages */
+.font-vazirmatn {
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}

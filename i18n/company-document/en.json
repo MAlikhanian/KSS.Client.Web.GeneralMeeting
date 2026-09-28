@@ -1,0 +1,18 @@
+{
+  "sectionTitle": "Documents & Images",
+  "addDialog": "Add Document",
+  "editDialog": "Edit Document",
+  "documentType": "Document Type",
+  "fileName": "File Name",
+  "fileSize": "Size",
+  "file": "File",
+  "noItems": "No documents registered",
+  "descriptionPlaceholder": "Optional description...",
+  "fileRequired": "Please select a file",
+  "keepExistingFile": "Current file will be kept",
+  "downloadFailed": "Failed to download file",
+  "added": "Document added",
+  "updated": "Document updated",
+  "deleted": "Document deleted",
+  "deleteFailed": "Failed to delete document"
+}

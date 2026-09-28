@@ -1,0 +1,59 @@
+/* Date Picker - Multi-Language Support (Persian & Gregorian) */
+
+/* Force black background for calendar popup in dark theme */
+.dark .rmdp-calendar {
+  background-color: #000000 !important;
+}
+
+.dark .rmdp-calendar .rmdp-header {
+  background-color: #000000 !important;
+}
+
+.dark .rmdp-calendar .rmdp-month-picker,
+.dark .rmdp-calendar .rmdp-year-picker {
+  background-color: #000000 !important;
+}
+
+/* Force white text color for all text and numbers in dark theme */
+.dark .rmdp-calendar {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar * {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-header {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-header * {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-day {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-week-day {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-arrow {
+  color: #ffffff !important;
+}
+
+.dark .rmdp-calendar .rmdp-month-picker .rmdp-month,
+.dark .rmdp-calendar .rmdp-year-picker .rmdp-year {
+  color: #ffffff !important;
+}
+
+/* RTL support for Persian calendar */
+.rmdp-calendar[dir="rtl"] {
+  direction: rtl;
+}
+
+/* LTR support for Gregorian calendar */
+.rmdp-calendar[dir="ltr"] {
+  direction: ltr;
+}

@@ -1,0 +1,92 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Central Hub for Personal Customization",
+    "datePicker": {
+      "pickDateRange": "Pick a date range",
+      "apply": "Apply",
+      "reset": "Reset"
+    },
+    "entityCounts": {
+      "companies": "Companies",
+      "persons": "Persons",
+      "brokerages": "Brokerages",
+      "funds": "Funds"
+    },
+    "highlights": {
+      "title": "Highlights",
+      "totalLabel": "Total Companies",
+      "allCompanies": "All Companies",
+      "withAccess": "With Active User (Access)",
+      "withCreatedPersons": "With Active User & Created Persons",
+      "withoutAccess": "Without Access",
+      "legendWithCreated": "With Active User & Created Persons",
+      "legendWithAccessOnly": "With Active User Only",
+      "legendWithoutAccess": "Without Access"
+    },
+    "entryCallout": {
+      "tedpixSubtitle": "Tehran Stock Exchange Index",
+      "marketOpen": "Market Open",
+      "marketClosed": "Market Closed",
+      "lastUpdate": "Last update",
+      "viewOnTsetmc": "View on tsetmc.com",
+      "loading": "Loading..."
+    },
+    "earningsChart": {
+      "title": "TEDPIX — 12-Month Trend",
+      "earnings": "Month-end Index",
+      "monthClose": "Month-end Index",
+      "month1": "Farvardin",
+      "month2": "Ordibehesht",
+      "month3": "Khordad",
+      "month4": "Tir",
+      "month5": "Mordad",
+      "month6": "Shahrivar",
+      "month7": "Mehr",
+      "month8": "Aban",
+      "month9": "Azar",
+      "month10": "Dey",
+      "month11": "Bahman",
+      "month12": "Esfand"
+    },
+    "marketTable": {
+      "title": "Capital & Currency Market",
+      "asset": "Name",
+      "lastPrice": "Latest Value",
+      "change": "Change",
+      "lastUpdate": "Date",
+      "noData": "No data",
+      "loading": "Loading..."
+    },
+    "supportMembers": {
+      "title": "Support Members",
+      "loading": "Loading...",
+      "noData": "No data",
+      "colName": "Name",
+      "colPosition": "Position",
+      "colExt": "Ext.",
+      "titles": {
+        "manager": "Manager",
+        "seniorExpert": "Senior Expert",
+        "expert": "Expert",
+        "supportExpert": "Support Expert",
+        "staff": "Staff"
+      },
+      "departments": {
+        "data": "Data & Software",
+        "members": "Member Affairs",
+        "it": "IT"
+      }
+    },
+    "teams": {
+      "title": "Teams",
+      "teamMembers": "Team Members",
+      "viewAll": "View All",
+      "team": "Team",
+      "rating": "Rating",
+      "lastModified": "Last Modified",
+      "members": "Members",
+      "searchTeams": "Search Teams..."
+    }
+  }
+}

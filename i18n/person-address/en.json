@@ -1,0 +1,23 @@
+{
+  "sectionTitle": "Addresses",
+  "addDialog": "Add Address",
+  "editDialog": "Edit Address",
+  "location": "Country / Province / City",
+  "address": "Address",
+  "postalCode": "Postal Code",
+  "street1": "Address (Street 1)",
+  "street2": "Address (Street 2)",
+  "selectCountry": "Select Country",
+  "selectRegion": "Select Province",
+  "selectCity": "Select City",
+  "selectCountryFirst": "Select country first",
+  "selectRegionFirst": "Select province first",
+  "street1Placeholder": "Main Street",
+  "street2Placeholder": "Building, Floor, Unit",
+  "noItems": "No addresses registered",
+  "added": "Address added",
+  "updated": "Address updated",
+  "deleted": "Address deleted",
+  "deleteFailed": "Failed to delete address",
+  "postalCodeLength": "Postal code must be {{length}} characters"
+}

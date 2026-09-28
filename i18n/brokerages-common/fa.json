@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "brokerageSelection": "انتخاب کارگزاری"
+  },
+  "fields": {
+    "selectedBrokerage": "انتخاب کارگزاری"
+  },
+  "placeholders": {
+    "selectedBrokerage": "کارگزاری مورد نظر را برای ارسال اطلاعات انتخاب کنید"
+  },
+  "search": {
+    "placeholder": "جستجوی کارگزاری‌ها...",
+    "noResults": "هیچ کارگزاری یافت نشد."
+  },
+  "selectBrokerage": {
+    "title": "انتخاب کارگزاری",
+    "description": "برای ویرایش اطلاعات، یک کارگزاری را از لیست انتخاب کنید.",
+    "placeholder": "انتخاب کارگزاری برای ویرایش...",
+    "label": "کارگزاری",
+    "newBrokerage": "ثبت کارگزاری جدید",
+    "editMode": "حالت ویرایش:"
+  }
+}

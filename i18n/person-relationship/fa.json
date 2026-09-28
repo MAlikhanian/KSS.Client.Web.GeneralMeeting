@@ -1,0 +1,16 @@
+{
+  "sectionTitle": "روابط",
+  "addDialog": "افزودن رابطه",
+  "editDialog": "ویرایش رابطه",
+  "relationshipType": "نوع رابطه",
+  "relatedPerson": "شخص مرتبط",
+  "nationalCode": "کد ملی",
+  "noItems": "هیچ رابطه‌ای ثبت نشده است",
+  "selectRelatedPerson": "لطفاً شخص مرتبط را انتخاب کنید",
+  "cannotRelateSelf": "نمی‌توانید شخص را با خودش مرتبط کنید",
+  "duplicate": "این رابطه قبلاً ثبت شده است",
+  "added": "رابطه اضافه شد",
+  "updated": "رابطه بروزرسانی شد",
+  "deleted": "رابطه حذف شد",
+  "deleteFailed": "خطا در حذف رابطه"
+}

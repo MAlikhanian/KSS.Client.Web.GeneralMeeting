@@ -1,0 +1,9 @@
+{
+  "title": "Person Cardex",
+  "completionRate": "Completion Rate",
+  "verifiedInfo": "Verified Information",
+  "lastUpdated": "Last Updated",
+  "status": "Status",
+  "profile": "Person Profile",
+  "profileDescription": "Manage person information in one place"
+}

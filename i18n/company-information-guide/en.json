@@ -1,0 +1,197 @@
+{
+  "route": "/company/information",
+  "title": "Company Information — Guide",
+  "subtitle": "A read-only training walkthrough with sample data and an explanation of every section",
+  "entry": {
+    "button": "Visual guide",
+    "tooltip": "Open the visual guide for this page with sample data",
+    "backToPage": "Back to the page"
+  },
+  "demoBanner": "Training mode — all data on this page is sample data shown for demonstration only. Nothing is saved or changed here and every control is read-only.",
+  "labels": {
+    "guide": "Guide",
+    "whatIs": "What is this section?",
+    "howTo": "How do I use it?",
+    "tips": "Tips",
+    "demoData": "Sample data (display only)",
+    "realControlNote": "The real control for this section is shown below, in read-only mode."
+  },
+  "quickStart": {
+    "title": "Quick start",
+    "intro": "To fill in a company's information, follow these steps in order:",
+    "steps": [
+      "From the card at the top, choose a company in “Select a company to edit…” (you can type a name, national ID, or code in the search box). Until you select one, nothing is shown.",
+      "After selecting, a blue “Edit mode:” badge with the company name appears and all sections load. If the title turns red with a “You have view-only access” banner, you may not edit.",
+      "Complete the “Name History” section with the “Add” button: start date and at least one name (first translation) are required; leaving the end date empty means it is the current name.",
+      "Fill in “Registration & Legal”: registration date, number, national ID, economic code, then choose country → province → city. Note this section does NOT auto-save.",
+      "Enter contact data: emails (address required), phones (E.164 format, + and 7–15 digits) and addresses (country/province/city, street 1 and postal code). These three sections auto-save.",
+      "In “Stakeholders”, add related people/companies with stakeholder type, ownership %, share count and dates as needed.",
+      "Finally, to save “Registration & Legal”, press the “Update Company” button in the “Operations” card and wait for the “Company updated successfully” message."
+    ]
+  },
+  "concepts": {
+    "title": "Key concepts (read before you start)",
+    "items": [
+      {
+        "title": "Auto-save vs. manual save",
+        "body": "All grids (name history, emails, phones, addresses, stakeholders) save immediately on every add/edit/delete. The only exception is “Registration & Legal”, which saves only via the “Update Company” button."
+      },
+      {
+        "title": "Selecting a company gates everything",
+        "body": "Until a company is selected, no section renders. The selection is remembered in the browser and stays selected on your next visit."
+      },
+      {
+        "title": "View-only access",
+        "body": "If your access level on the company is 1, the page title turns red with a “You have view-only access” banner; all fields are disabled and the add/edit/delete buttons and the Operations card are removed."
+      },
+      {
+        "title": "Feedback messages",
+        "body": "After each action a toast appears at the top: “Created successfully”, “Updated successfully”, “Deleted successfully”; on error, a red toast with a translated message."
+      }
+    ]
+  },
+  "sections": {
+    "selection": {
+      "title": "Select company",
+      "intro": "This card sits at the top and is the starting point. You use it to choose an existing company to edit; until one is selected, no other section is shown. (Creating a new company is done on the separate “Create company” page.)",
+      "steps": [
+        "Click the “Select a company to edit…” box to open the company list.",
+        "Type a name, national ID, or code in the search box to filter the list.",
+        "Click the company you want; a check appears next to it and the “Edit mode:” badge shows its name.",
+        "To clear the selection, click the × button next to the box; all sections hide again."
+      ],
+      "tips": [
+        "The selection is saved automatically and kept between visits; no button is needed for the selection itself.",
+        "If you lose access to the saved company or it is deleted, the selection is cleared automatically and the form resets.",
+        "The company name is not changed from this badge; do it from the “Name History” section."
+      ]
+    },
+    "nameHistory": {
+      "title": "Name history",
+      "intro": "The company's name history over time. Each row is a name period (start date, end date and a reason note), and for each period the name can be stored in multiple languages (Persian and Latin). A row with no end date is the company's current name.",
+      "steps": [
+        "Click “Add” to open the “Add new name change” dialog.",
+        "Pick a “Start date” (required), optionally fill the “End date” (empty = current name) and write a “Description”.",
+        "In “Company name (first translation)” pick a “Language” and enter the “Company name” (both required), then click “Add”.",
+        "To manage the name in other languages, click the “Translations” icon; add, edit or delete a translation.",
+        "To delete a whole name period, click the trash icon in the actions column."
+      ],
+      "tips": [
+        "Only one translation per language is allowed; if every language is used, “Add translation” is disabled.",
+        "The Persian translation is the base name and cannot be deleted, only edited.",
+        "The displayed name for each row follows the current UI language; if that language is missing, the base name is shown."
+      ]
+    },
+    "registrationLegal": {
+      "title": "Registration & legal",
+      "intro": "The company's registration data: registration date and number, place of registration (country/province/city), national ID and economic code. This is the only section that does NOT auto-save — you must press “Update Company” after editing it.",
+      "steps": [
+        "Pick the registration date from the calendar and enter the registration number.",
+        "Enter the national ID and economic code.",
+        "Choose the place of registration in cascading order: country, then province, then city.",
+        "To save, go to the “Operations” card at the bottom and press “Update Company”."
+      ],
+      "tips": [
+        "The red stars are visual hints; final validation happens on the server and returns an error toast if something is missing.",
+        "If the province or city list looks empty, select the higher level first (country then province).",
+        "If you edit this section but do not press “Update Company”, the changes are not saved."
+      ]
+    },
+    "emails": {
+      "title": "Emails",
+      "intro": "The company's list of emails. For each email you can set a label, the address and a “Primary” flag. The “Verified” status is display-only and set by the system.",
+      "steps": [
+        "Click “Add”; pick a label, enter the email address (required), optionally tick “Primary”, then “Add”.",
+        "To edit, click the pencil icon; to delete, click the trash icon in the same row.",
+        "All changes auto-save; no “Update Company” button is needed."
+      ],
+      "tips": [
+        "The “Primary” label is not the same as the “Primary” tick; the label is just a name, while the tick decides which email is the company's primary one.",
+        "You cannot change the “Verified” status yourself."
+      ]
+    },
+    "phones": {
+      "title": "Phones",
+      "intro": "The company's phone numbers with label, number and a “Primary” flag. The number must be in international E.164 format.",
+      "steps": [
+        "Click “Add” and pick a phone label (default: Landline).",
+        "Enter the number in E.164 format: a + sign then 7–15 digits (e.g. +982112345678).",
+        "Optionally tick “Primary” and click “Add” (the button stays disabled until the number is valid)."
+      ],
+      "tips": [
+        "The number must start with + and the country code; a local number without + is not valid.",
+        "While typing, invalid characters are stripped automatically; only digits and + remain."
+      ]
+    },
+    "addresses": {
+      "title": "Addresses",
+      "intro": "The company's addresses with label, location (country/province/city), street, postal code and a “Primary” flag. Location selection is cascading.",
+      "steps": [
+        "Click “Add” and pick the address “Label” (default: Head office).",
+        "Choose the country; then the province and the city become enabled.",
+        "Enter “Address (street 1)” and the postal code; put extra details in “Street 2” if needed.",
+        "Optionally tick “Primary” and click “Add”/“Save”."
+      ],
+      "tips": [
+        "If you don't see the province or city, select the higher level first.",
+        "Changing the country after filling the form clears the province, city and postal code.",
+        "The allowed postal-code length is validated based on the selected country."
+      ]
+    },
+    "stakeholders": {
+      "title": "Stakeholders",
+      "intro": "People or companies that have an ownership/shareholding relationship with this company (e.g. parent company, shareholder, investor). For each stakeholder, the relationship type, ownership %, share count, dates and the board representative are recorded.",
+      "steps": [
+        "Click “Add” to open the “Add stakeholder” dialog.",
+        "Pick the “Stakeholder type” (default: Shareholder).",
+        "Choose the related-party type (Person or Company), then search and select the related party.",
+        "Enter ownership %, share count, registration date and effective date (all four required), then click “Add”.",
+        "To view history, click the arrow at the start of the row (enabled only when history exists)."
+      ],
+      "tips": [
+        "Registration date vs. effective date: the registration date is when the record was created; the effective date is when the ownership state becomes valid.",
+        "The main table columns always show the latest (current) state; use the history arrow for previous values.",
+        "In this training sample, the related-party name shows as “unknown” because it is not connected to real person/company data."
+      ]
+    },
+    "operations": {
+      "title": "Operations & saving",
+      "intro": "The final card on the page. It holds the reminder “All operations are saved automatically, except Registration & Legal” and the “Update Company” button.",
+      "steps": [],
+      "tips": [
+        "The “Update Company” button saves only the “Registration & Legal” section; the other sections are already auto-saved.",
+        "This button is disabled only while “Processing…” or when no company is selected.",
+        "In view-only mode this card and button are removed entirely."
+      ]
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "Why can't I see any part of the form?",
+        "a": "Because you haven't selected a company yet. Until you pick one from the card at the top, none of the sections are shown. Select a company first."
+      },
+      {
+        "q": "I edited “Registration & Legal” but it didn't save, why?",
+        "a": "This is the only section that does not auto-save. After filling it in, press the “Update Company” button in the “Operations” card to save it."
+      },
+      {
+        "q": "The title turned red with a “view-only” message; what does that mean?",
+        "a": "It means your access level on this company is view-only. All fields are disabled and the add/edit/delete buttons and the Operations card are removed."
+      },
+      {
+        "q": "The company I had selected disappeared and the form went blank, why?",
+        "a": "If you no longer have access to that company or it was deleted, the system clears the selection automatically so the form resets."
+      },
+      {
+        "q": "Why can't I change the “Verified” status of an email/phone/address?",
+        "a": "The “Verified” column is display-only and set by the system; you can only set the “Primary” flag."
+      },
+      {
+        "q": "Where do I change the company name?",
+        "a": "Name changes are made from the “Name History” section; each name period has a start/end date, and a name with no end date is the company's current name."
+      }
+    ]
+  }
+}

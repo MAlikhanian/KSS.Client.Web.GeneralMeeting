@@ -1,0 +1,18 @@
+{
+  "sectionTitle": "مدارک و تصاویر",
+  "addDialog": "افزودن مدرک",
+  "editDialog": "ویرایش مدرک",
+  "documentType": "نوع مدرک",
+  "fileName": "نام فایل",
+  "fileSize": "حجم",
+  "file": "فایل",
+  "noItems": "هیچ مدرکی ثبت نشده است",
+  "descriptionPlaceholder": "توضیحات اختیاری...",
+  "fileRequired": "لطفاً فایل را انتخاب کنید",
+  "keepExistingFile": "فایل فعلی حفظ می‌شود",
+  "downloadFailed": "خطا در دانلود فایل",
+  "added": "مدرک اضافه شد",
+  "updated": "مدرک بروزرسانی شد",
+  "deleted": "مدرک حذف شد",
+  "deleteFailed": "خطا در حذف مدرک"
+}

@@ -1,0 +1,22 @@
+{
+  "emailsTitle": "ایمیل‌ها",
+  "phonesTitle": "تلفن‌ها",
+  "addEmail": "افزودن ایمیل",
+  "editEmail": "ویرایش ایمیل",
+  "addPhone": "افزودن شماره تلفن",
+  "editPhone": "ویرایش شماره تلفن",
+  "emailAddress": "آدرس ایمیل",
+  "phoneNumber": "شماره تلفن",
+  "noEmails": "هیچ ایمیلی ثبت نشده است",
+  "noPhones": "هیچ شماره تلفنی ثبت نشده است",
+  "emailRequired": "ایمیل الزامی است",
+  "phoneRequired": "شماره تلفن الزامی است",
+  "emailAdded": "ایمیل اضافه شد",
+  "emailUpdated": "ایمیل بروزرسانی شد",
+  "emailDeleted": "ایمیل حذف شد",
+  "emailDeleteFailed": "خطا در حذف ایمیل",
+  "phoneAdded": "شماره تلفن اضافه شد",
+  "phoneUpdated": "شماره تلفن بروزرسانی شد",
+  "phoneDeleted": "شماره تلفن حذف شد",
+  "phoneDeleteFailed": "خطا در حذف شماره تلفن"
+}

@@ -1,0 +1,16 @@
+{
+  "sectionTitle": "نام، نام خانوادگی و نام پدر",
+  "addDialog": "افزودن زبان",
+  "editDialog": "ویرایش نام",
+  "language": "زبان",
+  "firstName": "نام",
+  "lastName": "نام خانوادگی",
+  "fatherName": "نام پدر",
+  "nameIn": "نام به",
+  "lastNameIn": "نام خانوادگی به",
+  "fatherNameIn": "نام پدر به",
+  "noItems": "هیچ نامی ثبت نشده است. حداقل یک زبان اضافه کنید.",
+  "added": "نام اضافه شد",
+  "updated": "نام بروزرسانی شد",
+  "deleted": "نام حذف شد"
+}

@@ -1,0 +1,16 @@
+{
+  "sectionTitle": "Relationships",
+  "addDialog": "Add Relationship",
+  "editDialog": "Edit Relationship",
+  "relationshipType": "Relationship Type",
+  "relatedPerson": "Related Person",
+  "nationalCode": "National Code",
+  "noItems": "No relationships registered",
+  "selectRelatedPerson": "Please select a related person",
+  "cannotRelateSelf": "Cannot relate person to themselves",
+  "duplicate": "This relationship already exists",
+  "added": "Relationship added",
+  "updated": "Relationship updated",
+  "deleted": "Relationship deleted",
+  "deleteFailed": "Failed to delete relationship"
+}

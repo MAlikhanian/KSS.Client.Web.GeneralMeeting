@@ -1,0 +1,23 @@
+{
+  "sectionTitle": "آدرس‌ها",
+  "addDialog": "افزودن آدرس",
+  "editDialog": "ویرایش آدرس",
+  "location": "کشور / استان / شهر",
+  "address": "آدرس",
+  "postalCode": "کد پستی",
+  "street1": "آدرس (خیابان ۱)",
+  "street2": "آدرس (خیابان ۲)",
+  "selectCountry": "انتخاب کشور",
+  "selectRegion": "انتخاب استان",
+  "selectCity": "انتخاب شهر",
+  "selectCountryFirst": "ابتدا کشور را انتخاب کنید",
+  "selectRegionFirst": "ابتدا استان را انتخاب کنید",
+  "street1Placeholder": "خیابان اصلی",
+  "street2Placeholder": "پلاک، طبقه، واحد",
+  "noItems": "هیچ آدرسی ثبت نشده است",
+  "added": "آدرس اضافه شد",
+  "updated": "آدرس بروزرسانی شد",
+  "deleted": "آدرس حذف شد",
+  "deleteFailed": "خطا در حذف آدرس",
+  "postalCodeLength": "کد پستی باید {{length}} کاراکتر باشد"
+}

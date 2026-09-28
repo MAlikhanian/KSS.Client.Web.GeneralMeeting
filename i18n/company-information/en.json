@@ -1,0 +1,241 @@
+{
+  "readOnly": {
+    "companyInfoTitle": "Company Information",
+    "notice": {
+      "title": "Company information is read-only on this page",
+      "description": "To edit company information (name, registration, contacts and addresses), go to ",
+      "link": "Company → Update",
+      "suffix": "."
+    }
+  },
+  "toolbar": {
+    "title": "Company Information",
+    "description": "General Company Information Management",
+    "createTitle": "Create Company",
+    "createDescription": "Register a new company",
+    "viewTitle": "View Company",
+    "viewDescription": "View company information",
+    "saveDraft": "Save Draft",
+    "submit": "Submit"
+  },
+  "informationViewOnlyBanner": "You have view-only access to company information",
+  "form.messages.created": "Created successfully",
+  "form.messages.updated": "Updated successfully",
+  "form.messages.deleted": "Deleted successfully",
+  "form.messages.autoSubmitInfo": "All operations are saved automatically, except {{section}}",
+  "fields": {
+    "selectedCompany": "Select Company"
+  },
+  "placeholders": {
+    "selectedCompany": "Choose a company to submit information for"
+  },
+  "search": {
+    "placeholder": "Search companies...",
+    "noResults": "No companies found."
+  },
+  "selectCompany": {
+    "title": "Select Company",
+    "description": "To edit information, select a company from the list.",
+    "placeholder": "Select company to edit...",
+    "label": "Company",
+    "newCompany": "Register New Company",
+    "editMode": "Edit Mode:"
+  },
+  "common": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "save": "Save",
+    "person": "Person",
+    "company": "Company",
+    "current": "Current",
+    "toggleHistory": "Show history"
+  },
+  "stakeholderTypes": {
+    "parent": "Parent Company",
+    "subsidiary": "Subsidiary",
+    "investor": "Investor",
+    "partner": "Partner",
+    "shareholder": "Shareholder",
+    "franchisor": "Franchisor",
+    "franchisee": "Franchisee",
+    "other": "Other"
+  },
+  "form": {
+    "title": "General Information",
+    "addStakeholder": "Add Stakeholder",
+    "editStakeholder": "Edit Stakeholder",
+    "messages": {
+      "companyCreated": "Company created successfully",
+      "companyUpdated": "Company updated successfully",
+      "createInfo": "After registering the company, you will be redirected to the edit page to complete the remaining information (contacts, stakeholders, etc.)."
+    },
+    "validation": {
+      "invalidPhone": "Phone number must be in E.164 format: + and 7 to 15 digits (e.g. +982112345678)"
+    },
+    "addNameHistory": "Add New Name Change",
+    "editNameHistory": "Edit Name Change",
+    "addTranslation": "Add Translation",
+    "editTranslation": "Edit Translation",
+    "addEmail": "Add Email",
+    "editEmail": "Edit Email",
+    "addPhone": "Add Phone",
+    "editPhone": "Edit Phone",
+    "addAddress": "Add Address",
+    "editAddress": "Edit Address",
+    "addWebsite": "Add Website",
+    "editWebsite": "Edit Website",
+    "sections": {
+      "companyInfo": "Company Information",
+      "basicInfo": "Basic Information",
+      "nameHistory": "Name History",
+      "registrationInfo": "Registration Information",
+      "legalInfo": "Legal Information",
+      "registrationLegal": "Registration & Legal Information",
+      "contactInfo": "Contact Information",
+      "addressInfo": "Address Information",
+      "stakeholders": "Stakeholders",
+      "stakeholderHistory": "Stakeholder History",
+      "operations": "Operations"
+    },
+    "fields": {
+      "companyPersianName": "Company Name (Persian)",
+      "companyLatinName": "Company Name (Latin)",
+      "formerNames": "Former Names",
+      "registrationDate": "Registration Date",
+      "registrationNumber": "Registration Number",
+      "registrationPlace": "Place of Registration",
+      "seoRegistrationDate": "SEO Registration Date",
+      "seoRegistrationNumber": "SEO Registration Number",
+      "employeeCount": "Number of Employees",
+      "nationalId": "National ID",
+      "economicCode": "Economic Code",
+      "phoneNumber": "Phone Number",
+      "faxNumber": "Fax Number",
+      "headOfficeAddress": "Head Office Address",
+      "postalCode": "Postal Code",
+      "poBox": "P.O. Box",
+      "website": "Website",
+      "email": "Email",
+      "registrationCountry": "Registration Country",
+      "registrationRegion": "Registration Province",
+      "registrationCity": "Registration City",
+      "stakeholderType": "Stakeholder Type",
+      "relatedParty": "Related Party",
+      "relatedPartyType": "Related Party Type",
+      "ownershipPercentage": "Ownership %",
+      "shareCount": "Share Count",
+      "effectiveDate": "Effective Date",
+      "endDate": "End Date",
+      "boardRepresentative": "Board Representative",
+      "names": "Names",
+      "companyName": "Company Name",
+      "startDate": "Start Date",
+      "status": "Status",
+      "description": "Description",
+      "current": "Current",
+      "translations": "Translations",
+      "firstTranslation": "Company Name (first translation)",
+      "language": "Language",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "street1": "Address (Street 1)",
+      "street2": "Address (Street 2)",
+      "locationColumn": "Country / Province / City"
+    },
+    "placeholders": {
+      "companyPersianName": "Enter company name in Persian",
+      "companyLatinName": "Enter company name in Latin",
+      "formerNames": "Enter former company names (one per line)",
+      "registrationNumber": "Enter registration number",
+      "registrationPlace": "Enter place of registration",
+      "seoRegistrationNumber": "Enter SEO registration number",
+      "employeeCount": "Enter number of employees",
+      "nationalId": "Enter national ID",
+      "economicCode": "Enter economic code",
+      "phoneNumber": "Enter phone number",
+      "faxNumber": "Enter fax number",
+      "headOfficeAddress": "Enter head office address",
+      "postalCode": "Enter postal code",
+      "poBox": "Enter P.O. Box number",
+      "website": "Enter website URL",
+      "email": "Enter email address",
+      "registrationCountry": "Select registration country",
+      "registrationRegion": "Select registration province",
+      "registrationCity": "Select registration city",
+      "registrationDate": "Select registration date",
+      "effectiveDate": "Select effective date",
+      "noStakeholders": "No stakeholders recorded",
+      "unknownPerson": "Unknown person",
+      "unknownCompany": "Unknown company",
+      "noNameHistory": "No names recorded",
+      "startDate": "Start Date",
+      "endDate": "Empty = current name",
+      "nameChangeDescription": "Reason for name change...",
+      "companyNameIn": "Company name in",
+      "noTranslations": "No translations recorded",
+      "noEmails": "No emails recorded",
+      "noPhones": "No phones recorded",
+      "noAddresses": "No addresses recorded",
+      "noWebsites": "No websites recorded",
+      "websiteExample": "https://www.company.com",
+      "selectCountry": "Select country",
+      "selectProvince": "Select province",
+      "selectCity": "Select city",
+      "street1": "Main street",
+      "street2": "No., floor, unit",
+      "postalCodeLength": "Postal code must be {{count}} characters",
+      "emailExample": "example@company.com",
+      "phoneExample": "+982112345678"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "create": "Create Company",
+      "update": "Update Company",
+      "processing": "Processing..."
+    }
+  },
+  "labels": {
+    "address": {
+      "headOffice": "Head Office",
+      "branch": "Branch",
+      "warehouse": "Warehouse",
+      "factory": "Factory",
+      "other": "Other"
+    },
+    "email": {
+      "main": "Main",
+      "work": "Work",
+      "personal": "Personal",
+      "support": "Support",
+      "other": "Other"
+    },
+    "phone": {
+      "landline": "Landline",
+      "mobile": "Mobile",
+      "fax": "Fax",
+      "emergency": "Emergency",
+      "other": "Other"
+    },
+    "website": {
+      "main": "Main",
+      "support": "Support",
+      "shop": "Shop",
+      "careers": "Careers",
+      "other": "Other"
+    }
+  },
+  "sidebar": {
+    "title": "Profile Overview",
+    "completionRate": "Completion Rate",
+    "completionRateValue": "0% Complete",
+    "verifiedInfo": "Verified Information",
+    "verifiedInfoValue": "0 Fields Verified",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedValue": "2 hours ago",
+    "progress": "Progress This Week",
+    "progressValue": "+0% this week",
+    "companyProfile": "Company Profile"
+  }
+}
