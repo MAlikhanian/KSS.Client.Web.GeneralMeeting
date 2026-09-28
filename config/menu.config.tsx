@@ -358,20 +358,24 @@ export const MENU_SIDEBAR: MenuConfig = [
   {
     title: 'Customer Risk',
     icon: Shield,
-    // TEMP: restrict to SuperAdmin + Developer while UI is in development.
-    // Migration 023's global `Developer` role lets devs preview the CRS UI
-    // without SuperAdmin escalation. Replace with per-item `permissions:`
-    // arrays once the CRS backend lands.
-    roles: ['SuperAdmin', 'Developer'],
+    // Gated per item; the group itself carries no gate. filterMenuByRole hides
+    // a parent once ALL its children are hidden, and one node cannot express
+    // "permission OR role" (roles and permissions are AND-ed on the same item).
+    // So every child must carry its own gate: an ungated child would make the
+    // whole section visible to every signed-in user.
+    //   CustomerRisk.Case.Read    -> overview, own cases, archive
+    //   CustomerRisk.Case.Modify  -> new case
+    //   SuperAdmin role           -> audit log, user admin, IP whitelist
+    // Risk Search (/customer-risk/search) is intentionally not listed in this
+    // version. Add it back with its own gate when that screen is released.
     children: [
-      { title: 'CRS Overview', path: '/customer-risk/overview' },
-      { title: 'My Risk Cases', path: '/customer-risk/cases' },
-      { title: 'Risk Archive', path: '/customer-risk/archive' },
-      { title: 'New Risk Case', path: '/customer-risk/new-case' },
-      { title: 'Risk Search', path: '/customer-risk/search' },
-      { title: 'Risk Audit Log', path: '/customer-risk/audit-log' },
-      { title: 'CRS Users', path: '/customer-risk/admin/users' },
-      { title: 'CRS IP Whitelist', path: '/customer-risk/admin/ip-whitelist' },
+      { title: 'CRS Overview', path: '/customer-risk/overview', permissions: ['CustomerRisk.Case.Read'] },
+      { title: 'My Risk Cases', path: '/customer-risk/cases', permissions: ['CustomerRisk.Case.Read'] },
+      { title: 'Risk Archive', path: '/customer-risk/archive', permissions: ['CustomerRisk.Case.Read'] },
+      { title: 'New Risk Case', path: '/customer-risk/new-case', permissions: ['CustomerRisk.Case.Modify'] },
+      { title: 'Risk Audit Log', path: '/customer-risk/audit-log', roles: ['SuperAdmin'] },
+      { title: 'CRS Users', path: '/customer-risk/admin/users', roles: ['SuperAdmin'] },
+      { title: 'CRS IP Whitelist', path: '/customer-risk/admin/ip-whitelist', roles: ['SuperAdmin'] },
     ],
   },
   {
