@@ -208,51 +208,47 @@ export const MENU_SIDEBAR: MenuConfig = [
     // back-office console. Its OWN domain: it is not part of the Members
     // Information system and must not be nested under it.
     //
-    // TODO(backend): re-add the permission gates below once KSS.Service.SPM
-    // exists and the SPM.* permissions are seeded in Auth and granted to a
-    // role. They are intentionally omitted for now: filterMenuByRole hides any
-    // item whose permissions the user lacks, and hides a parent group once all
-    // its children are hidden — so gating these today would make the whole
-    // section invisible while it is being reviewed on mock data.
-    //   Requests           SPM.Request.Read / .Modify
-    //   Orders             SPM.Order.Read / .Modify
-    //   Settlements        SPM.Settlement.Read / .Modify
-    //   Ledger             SPM.Ledger.Read
-    //   Reconciliation     SPM.Reconciliation.Read / .Modify
-    //   Adjustments        SPM.Adjustment.Read / .Approve
-    //   Manual Resolution  SPM.Resolution.Read / .Modify
-    //   Investor Accounts  SPM.Account.Read / .Modify
-    //   Instruments        SPM.Instrument.Read / .Modify
-    //   Audit Trail        SPM.Audit.Read
-    //   Service Health     SPM.Health.Read
+    // Gated on ONE permission, SPM.Read, carried by this group and by every one
+    // of its 15 children. The section is visible only to users who hold
+    // SPM.Read.
+    //
+    // The per-screen codes that used to be listed here — SPM.Request.*,
+    // SPM.Order.*, SPM.Settlement.* and the rest — were a DECISION NOT TO
+    // BUILD: not an oversight, not a deferral. Do not reinstate them. One code
+    // for the whole section is what was asked for.
+    //
+    // Why the code is on every child and not only on the group: filterMenuByRole
+    // hides a parent once ALL its children are hidden, so one ungated child
+    // would keep the whole section visible. The group's own `permissions` is
+    // honoured as well — the check in menu-translation-utils.ts runs on every
+    // node, parent or leaf — so either alone would gate it today. Carrying both
+    // is what keeps the gate shut if a child is ever added without one.
     title: 'SPM Investment',
     icon: TrendingUp,
+    permissions: ['SPM.Read'],
     children: [
-      { title: 'Requests', path: '/spm/requests' },
-      { title: 'Orders', path: '/spm/orders' },
-      { title: 'Settlements', path: '/spm/settlements' },
-      { title: 'Ledger', path: '/spm/ledger' },
-      { title: 'Reconciliation', path: '/spm/reconciliation' },
-      { title: 'Adjustments', path: '/spm/adjustments' },
-      { title: 'Manual Resolution', path: '/spm/resolution' },
-      { title: 'Investor Accounts', path: '/spm/accounts' },
-      { title: 'Instruments', path: '/spm/instruments' },
-      { title: 'Audit Trail', path: '/spm/audit' },
-      { title: 'Service Health', path: '/spm/health' },
+      { title: 'Requests', path: '/spm/requests', permissions: ['SPM.Read'] },
+      { title: 'Orders', path: '/spm/orders', permissions: ['SPM.Read'] },
+      { title: 'Settlements', path: '/spm/settlements', permissions: ['SPM.Read'] },
+      { title: 'Ledger', path: '/spm/ledger', permissions: ['SPM.Read'] },
+      { title: 'Reconciliation', path: '/spm/reconciliation', permissions: ['SPM.Read'] },
+      { title: 'Adjustments', path: '/spm/adjustments', permissions: ['SPM.Read'] },
+      { title: 'Manual Resolution', path: '/spm/resolution', permissions: ['SPM.Read'] },
+      { title: 'Investor Accounts', path: '/spm/accounts', permissions: ['SPM.Read'] },
+      { title: 'Instruments', path: '/spm/instruments', permissions: ['SPM.Read'] },
+      { title: 'Audit Trail', path: '/spm/audit', permissions: ['SPM.Read'] },
+      { title: 'Service Health', path: '/spm/health', permissions: ['SPM.Read'] },
       // Investor portal — the END-USER side of the same platform (§6-1).
-      // Inside this group rather than standing alone, so the whole SPM domain
-      // reads as one section. Note the consequence: `navItemsForPathPrefix`
-      // returns this group's children, so these four also appear in the
-      // console's secondary navbar.
-      //
+      // Inside this group so the whole SPM domain reads as one section.
       // TODO(auth): in production an investor never sees this sidebar — the
       // portal is its own entry point after investor sign-in. Listed here so
       // the work can be reviewed before §6-1 item 1 (registration and
-      // authentication) exists. Gate on SPM.Portal.* when permissions land.
-      { title: 'Portal Overview', path: '/spm/portal' },
-      { title: 'Portal Funds', path: '/spm/portal/instruments' },
-      { title: 'Portal New Request', path: '/spm/portal/new-request' },
-      { title: 'Portal My Requests', path: '/spm/portal/requests' },
+      // authentication) exists. Gated on SPM.Read with the rest of the
+      // section; the SPM.Portal.* codes were decided against, not deferred.
+      { title: 'Portal Overview', path: '/spm/portal', permissions: ['SPM.Read'] },
+      { title: 'Portal Funds', path: '/spm/portal/instruments', permissions: ['SPM.Read'] },
+      { title: 'Portal New Request', path: '/spm/portal/new-request', permissions: ['SPM.Read'] },
+      { title: 'Portal My Requests', path: '/spm/portal/requests', permissions: ['SPM.Read'] },
     ],
   },
   {
@@ -302,6 +298,11 @@ export const MENU_SIDEBAR: MenuConfig = [
       { title: 'Cash Advance Approvals', path: '/cash-advance/approvals', permissions: ['CashAdvance.Approval.Ceo', 'CashAdvance.Approval.FinancialManager'] },
       { title: 'Cash Advance Submit Invoice', path: '/cash-advance/invoice/submit', permissions: ['CashAdvance.Invoice.Submit'] },
       { title: 'Cash Advance Invoices', path: '/cash-advance/invoice/view', permissions: ['CashAdvance.Invoice.Read'] },
+      // Placement requested by the customer (2026-09-06): right-side menu, under the تنخواه
+      // section, labelled روکش تنخواه. Sits beside Invoices because it is an invoice-derived
+      // report. Gated on Invoice.Read to match the cover page's own guard, so it appears for
+      // exactly the people who can open it.
+      { title: 'Cash Advance Cover Sheet', path: '/cash-advance/invoice/cover', permissions: ['CashAdvance.Invoice.Read'] },
       { title: 'Cash Advance Ledger', path: '/cash-advance/ledger', permissions: ['CashAdvance.Ledger.Read'] },
       { title: 'Cash Advance Products', path: '/cash-advance/products', permissions: ['CashAdvance.Admin.Read'] },
       {
@@ -315,6 +316,13 @@ export const MENU_SIDEBAR: MenuConfig = [
       },
       { title: 'Cash Advance Person Limits', path: '/cash-advance/person-limits', permissions: ['CashAdvance.Admin.Read'] },
     ],
+  },
+  {
+    // Gated on Dms.Read; SuperAdmin deliberately does not hold it.
+    title: 'Dredging Management',
+    icon: Briefcase,
+    path: '/dms',
+    permissions: ['Dms.Read'],
   },
   {
     title: 'General Meeting',
