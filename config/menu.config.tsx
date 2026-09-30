@@ -325,6 +325,15 @@ export const MENU_SIDEBAR: MenuConfig = [
     permissions: ['Dms.Read'],
   },
   {
+    // Gated on Fleet.Read by permission only (no role condition: roles and
+    // permissions are AND-ed, so a role would narrow it further). Until the
+    // permission exists in Auth nobody holds it, so the entry stays hidden.
+    title: 'Fleet',
+    icon: Network,
+    path: '/fleet',
+    permissions: ['Fleet.Read'],
+  },
+  {
     title: 'General Meeting',
     icon: Gavel,
     // Permission-gated via KSS.Service.SEBA_ERP_Members Meeting/Election RBAC.
@@ -373,11 +382,11 @@ export const MENU_SIDEBAR: MenuConfig = [
     // whole section visible to every signed-in user.
     //   CustomerRisk.Case.Read    -> overview, own cases, archive
     //   CustomerRisk.Case.Modify  -> new case
+    //   CustomerRisk.Search.Read  -> risk search
     //   SuperAdmin role           -> audit log, user admin, IP whitelist
-    // Risk Search (/customer-risk/search) is intentionally not listed in this
-    // version. Add it back with its own gate when that screen is released.
     children: [
       { title: 'CRS Overview', path: '/customer-risk/overview', permissions: ['CustomerRisk.Case.Read'] },
+      { title: 'Risk Search', path: '/customer-risk/search', permissions: ['CustomerRisk.Search.Read'] },
       { title: 'My Risk Cases', path: '/customer-risk/cases', permissions: ['CustomerRisk.Case.Read'] },
       { title: 'Risk Archive', path: '/customer-risk/archive', permissions: ['CustomerRisk.Case.Read'] },
       { title: 'New Risk Case', path: '/customer-risk/new-case', permissions: ['CustomerRisk.Case.Modify'] },

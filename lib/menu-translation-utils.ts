@@ -43,6 +43,7 @@ const MENU_TRANSLATION_KEYS: Record<string, string> = {
   'View Cash Advance': 'menu.cashAdvanceView',
   'Cash Advance Person Limits': 'menu.cashAdvancePersonLimits',
   'Dredging Management': 'menu.dms',
+  'Fleet': 'menu.fleet',
   'General Meeting': 'menu.generalMeeting',
   'Meeting Reports': 'menu.meetingReports',
   'Meeting Elections': 'menu.meetingElections',
