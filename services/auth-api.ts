@@ -13,7 +13,6 @@ function getBaseUrl(): string {
       'AUTH_API_BASE_URL environment variable is required but not set.',
     );
   }
-  console.log('[Auth API] Using base URL:', baseUrl);
   return baseUrl;
 }
 
@@ -56,7 +55,7 @@ export async function registerAuth(
   const baseUrl = getBaseUrl();
   const url = `${baseUrl}/Api/User/Register`;
 
-  console.log('[Auth API] Registering user:', { url, username: data.username, email: data.email });
+  console.log('[Auth API] Registering user');
 
   try {
     const response = await fetch(url, {
@@ -77,8 +76,6 @@ export async function registerAuth(
       console.error('[Auth API] Registration failed:', {
         status: response.status,
         statusText: response.statusText,
-        errorText,
-        url
       });
 
       let message = 'Registration failed. Please try again later.';
@@ -99,10 +96,8 @@ export async function registerAuth(
       return { raw: text };
     }
   } catch (error) {
-    console.error('[Auth API] Registration error:', { 
+    console.error('[Auth API] Registration error:', {
       error: error instanceof Error ? error.message : String(error),
-      url,
-      baseUrl 
     });
     throw error;
   }
@@ -179,7 +174,6 @@ export async function getCurrentUser(token: string): Promise<{
     throw new Error('Authentication token is required');
   }
   
-  console.log('[Auth API] Fetching current user:', { url });
   
   try {
     const response = await fetch(url, {
@@ -194,11 +188,9 @@ export async function getCurrentUser(token: string): Promise<{
 
     if (!response.ok) {
       const errorText = await response.text().catch(() => response.statusText);
-      console.error('[Auth API] Fetch failed:', { 
-        status: response.status, 
+      console.error('[Auth API] Fetch failed:', {
+        status: response.status,
         statusText: response.statusText,
-        errorText,
-        url 
       });
       
       // Handle 401 Unauthorized - token expired
@@ -220,8 +212,6 @@ export async function getCurrentUser(token: string): Promise<{
   } catch (error) {
     console.error('[Auth API] Fetch error:', {
       error: error instanceof Error ? error.message : String(error),
-      url,
-      baseUrl
     });
     throw error;
   }
